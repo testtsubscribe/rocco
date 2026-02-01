@@ -1,9 +1,7 @@
-Precision Gems Ltd. - Corporate Website
-
 A modern, responsive corporate website for a stone cutting and polishing company built with Django.
 🏢 About The Project
 
-Precision Gems Ltd. specializes in premium stone cutting, polishing, and finishing services for gemstones, marble, granite, and decorative stones. This website showcases their services, stone types, and provides a professional online presence.
+Rocco Ltd. specializes in premium stone cutting, polishing, and finishing services for gemstones, marble, granite, and decorative stones. This website showcases their services, stone types, and provides a professional online presence.
 ✨ Features
     Modern Responsive Design - Works perfectly on all devices
     Professional UI/UX - Clean, corporate design with Bootstrap 5
@@ -47,7 +45,7 @@ Quick Start
     Clone or download the project
     bash
 
-cd precisiongems
+cd rocco
 
 Create and activate virtual environment
 bash
@@ -217,4 +215,4 @@ After installation, verify:
     Admin panel is accessible at /admin
     Website is responsive on different screen sizes
 
-Precision Gems Ltd. - Transforming Raw Stones into Exquisite Finished Products
+Rocco Ltd. - Transforming Raw Stones into Exquisite Finished Products
