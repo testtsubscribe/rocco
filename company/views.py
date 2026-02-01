@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.views.generic import ListView
-from .models import Service, StoneType
+from django.utils.translation import gettext_lazy as _
+from .models import Service, StoneType, CompanyInfo, AboutPageContent
 from .forms import ContactForm
 
 def home(request):
@@ -15,7 +16,14 @@ def home(request):
     return render(request, 'company/home.html', context)
 
 def about(request):
-    return render(request, 'company/about.html')
+    company = CompanyInfo.objects.filter(is_active=True).first()
+    about_content = AboutPageContent.objects.filter(is_active=True).first()
+    
+    context = {
+        'company': company,
+        'about_content': about_content,
+    }
+    return render(request, 'company/about.html', context)
 
 def services(request):
     services = Service.objects.all()
@@ -30,7 +38,7 @@ def contact(request):
         form = ContactForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Thank you for your inquiry! We will contact you soon.')
+            messages.success(request, _('Thank you for your inquiry! We will contact you soon.'))
             return redirect('contact')
     else:
         form = ContactForm()

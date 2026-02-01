@@ -16,7 +16,7 @@ LANGUAGES = [
 ]
 
 INSTALLED_APPS = [
-
+    'modeltranslation',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -82,6 +82,10 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'az'
 
+# Modeltranslation settings
+MODELTRANSLATION_DEFAULT_LANGUAGE = 'az'
+MODELTRANSLATION_LANGUAGES = ('az', 'en', 'ru')
+MODELTRANSLATION_FALLBACK_LANGUAGES = ('az', 'en')
 
 TIME_ZONE = 'UTC'
 USE_I18N = True
