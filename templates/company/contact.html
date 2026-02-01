@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-lg-10 mx-auto">
+            <div class="text-center mb-5">
+                <h1 class="display-4 fw-bold">{% trans "Contact Us" %}</h1>
+                <p class="lead text-muted">{% trans "Get in touch with our expert team" %}</p>
+            </div>
+
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <i class="fas fa-check-circle me-2"></i>{{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+            {% endfor %}
+            {% endif %}
+
+            <div class="row g-5">
+                <div class="col-md-6">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body p-4">
+                            <h4 class="fw-bold mb-4">{% trans "Send us a Message" %}</h4>
+                            <form method="post">
+                                {% csrf_token %}
+                                <div class="mb-3">
+                                    {{ form.name }}
+                                    {% if form.name.errors %}
+                                    <div class="text-danger small mt-1">{{ form.name.errors }}</div>
+                                    {% endif %}
+                                </div>
+                                <div class="mb-3">
+                                    {{ form.email }}
+                                    {% if form.email.errors %}
+                                    <div class="text-danger small mt-1">{{ form.email.errors }}</div>
+                                    {% endif %}
+                                </div>
+                                <div class="mb-3">
+                                    {{ form.phone }}
+                                </div>
+                                <div class="mb-3">
+                                    {{ form.service }}
+                                    {% if form.service.errors %}
+                                    <div class="text-danger small mt-1">{{ form.service.errors }}</div>
+                                    {% endif %}
+                                </div>
+                                <div class="mb-3">
+                                    {{ form.message }}
+                                    {% if form.message.errors %}
+                                    <div class="text-danger small mt-1">{{ form.message.errors }}</div>
+                                    {% endif %}
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100 py-2">
+                                    <i class="fas fa-paper-plane me-2"></i>{% trans "Send Message" %}
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body p-4">
+                            <h4 class="fw-bold mb-4">{% trans "Contact Information" %}</h4>
+                            {% if company %}
+                            <div class="mb-4">
+                                <div class="d-flex align-items-start mb-3">
+                                    <i class="fas fa-map-marker-alt text-primary me-3 mt-1"></i>
+                                    <div>
+                                        <h6 class="fw-bold mb-1">{% trans "Address" %}</h6>
+                                        <p class="text-muted mb-0">{{ company.address|linebreaksbr }}</p>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-start mb-3">
+                                    <i class="fas fa-phone text-primary me-3 mt-1"></i>
+                                    <div>
+                                        <h6 class="fw-bold mb-1">{% trans "Phone" %}</h6>
+                                        <p class="text-muted mb-0">{{ company.phone }}</p>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-start mb-3">
+                                    <i class="fas fa-envelope text-primary me-3 mt-1"></i>
+                                    <div>
+                                        <h6 class="fw-bold mb-1">{% trans "Email" %}</h6>
+                                        <p class="text-muted mb-0">{{ company.email }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+
+                            <div class="mt-4">
+                                <h5 class="fw-bold mb-3">{% trans "Business Hours" %}</h5>
+                                <div class="d-flex justify-content-between border-bottom py-2">
+                                    <span>{% trans "Monday - Friday" %}</span>
+                                    <span class="fw-bold">{% trans "8:00 AM - 6:00 PM" %}</span>
+                                </div>
+                                <div class="d-flex justify-content-between border-bottom py-2">
+                                    <span>{% trans "Saturday" %}</span>
+                                    <span class="fw-bold">{% trans "9:00 AM - 2:00 PM" %}</span>
+                                </div>
+                                <div class="d-flex justify-content-between py-2">
+                                    <span>{% trans "Sunday" %}</span>
+                                    <span class="fw-bold text-muted">{% trans "Closed" %}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

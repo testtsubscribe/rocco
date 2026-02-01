@@ -1,0 +1,282 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-01-30 23:26+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: az\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: company/forms.py:57
+msgid "Your Name"
+msgstr "Sizin Adınız"
+
+#: company/forms.py:61
+msgid "Your Email"
+msgstr "Sizin Emailiniz"
+
+#: company/forms.py:65
+msgid "Your Phone Number"
+msgstr "Sizin Telefon Nömrəniz"
+
+#: company/forms.py:72 company/forms.py:81
+msgid "Your Message"
+msgstr "Sizin Mesajınız"
+
+#: company/forms.py:77
+msgid "Full Name"
+msgstr "Tam Ad"
+
+#: company/forms.py:78
+msgid "Email Address"
+msgstr "Email Ünvanı"
+
+#: company/forms.py:79
+msgid "Phone Number"
+msgstr "Telefon Nömrəsi"
+
+#: company/forms.py:80
+msgid "Service Interested In"
+msgstr "Maraqlandığınız Xidmət"
+
+#: precisiongems/settings.py:84
+msgid "Azerbaijani"
+msgstr "Azərbaycan"
+
+#: precisiongems/settings.py:85
+msgid "English"
+msgstr "İngilis"
+
+#: precisiongems/settings.py:86
+msgid "Russian"
+msgstr "Rus"
+
+#: templates/base.html:22 templates/company/home.html:9
+msgid "Precision Gems Ltd."
+msgstr "Precision Gems Ltd."
+
+#: templates/base.html:30
+msgid "Home"
+msgstr "Ana Səhifə"
+
+#: templates/base.html:33
+msgid "About"
+msgstr "Haqqımızda"
+
+#: templates/base.html:36
+msgid "Services"
+msgstr "Xidmətlər"
+
+#: templates/base.html:39
+msgid "Stone Types"
+msgstr "Daş Növləri"
+
+#: templates/base.html:42
+msgid "Contact"
+msgstr "Əlaqə"
+
+#: templates/base.html:92
+msgid "All rights reserved."
+msgstr "Bütün hüquqlar qorunur."
+
+#: templates/company/about.html:9
+msgid "About Us"
+msgstr "Haqqımızda"
+
+#: templates/company/about.html:10
+msgid "Learn about our journey, mission, and commitment to excellence"
+msgstr "Səyahətimiz, missiyamız və mükəmməlliyə sadiqliyimiz haqqında öyrənin"
+
+#: templates/company/about.html:17
+msgid "Our Company"
+msgstr "Şirkətimiz"
+
+#: templates/company/about.html:28
+msgid "Our Mission"
+msgstr "Missiyamız"
+
+#: templates/company/about.html:39
+msgid "Our Vision"
+msgstr "Vizyonumuz"
+
+#: templates/company/about.html:50
+msgid "Why Choose Precision Gems?"
+msgstr "Niyə Precision Gems seçməlisiniz?"
+
+#: templates/company/about.html:54
+msgid "Quality Craftsmanship"
+msgstr "Keyfiyyətli Sənətkarlıq"
+
+#: templates/company/about.html:60
+msgid "Timely Delivery"
+msgstr "Vaxtında Çatdırılma"
+
+#: templates/company/about.html:61
+msgid "On-time project completion guaranteed"
+msgstr "Layihənin vaxtında tamamlanmasına zəmanət verilir"
+
+#: templates/company/about.html:65
+msgid "Expert Team"
+msgstr "Peşəkar Komanda"
+
+#: templates/company/about.html:71
+msgid "Modern Equipment"
+msgstr "Müasir Avadanlıq"
+
+#: templates/company/about.html:77
+msgid "Quality Guarantee"
+msgstr "Keyfiyyət Zəmanəti"
+
+#: templates/company/about.html:78
+msgid "We stand behind our work with confidence"
+msgstr "Biz işimizin arxasında əminliklə dayanırıq"
+
+#: templates/company/about.html:82
+msgid "Customer Focus"
+msgstr "Müştəri Diqqəti"
+
+#: templates/company/about.html:83
+msgid "Your satisfaction is our top priority"
+msgstr "Sizin məmnuniyyətiniz bizim prioritetimizdir"
+
+#: templates/company/contact.html:9
+msgid "Contact Us"
+msgstr "Bizimlə Əlaqə"
+
+#: templates/company/contact.html:10
+msgid "Get in touch with our expert team"
+msgstr "Peşəkar komandamızla əlaqə saxlayın"
+
+#: templates/company/contact.html:26
+msgid "Send us a Message"
+msgstr "Bizə Mesaj Göndərin"
+
+#: templates/company/contact.html:57
+msgid "Send Message"
+msgstr "Mesaj Göndər"
+
+#: templates/company/contact.html:66
+msgid "Contact Information"
+msgstr "Əlaqə Məlumatları"
+
+#: templates/company/contact.html:72
+msgid "Address"
+msgstr "Ünvan"
+
+#: templates/company/contact.html:79
+msgid "Phone"
+msgstr "Telefon"
+
+#: templates/company/contact.html:86
+msgid "Email"
+msgstr "Email"
+
+#: templates/company/contact.html:94
+msgid "Business Hours"
+msgstr "İş Saatları"
+
+#: templates/company/contact.html:96
+msgid "Monday - Friday"
+msgstr "Bazar ertəsi - Cümə"
+
+#: templates/company/contact.html:97
+msgid "8:00 AM - 6:00 PM"
+msgstr "08:00 - 18:00"
+
+#: templates/company/contact.html:100
+#: venv/lib/python3.12/site-packages/django/utils/dates.py:12
+msgid "Saturday"
+msgstr "Şənbə"
+
+#: templates/company/contact.html:101
+msgid "9:00 AM - 2:00 PM"
+msgstr "09:00 - 14:00"
+
+#: templates/company/contact.html:104
+#: venv/lib/python3.12/site-packages/django/utils/dates.py:13
+msgid "Sunday"
+msgstr "Bazar"
+
+#: templates/company/contact.html:105
+msgid "Closed"
+msgstr "Bağlıdır"
+
+#: templates/company/home.html:12
+msgid "Premium Stone Cutting & Polishing Services"
+msgstr "Premium Daş Kəsimi və Cilalama Xidmətləri"
+
+#: templates/company/home.html:16
+msgid "Get Free Quote"
+msgstr "Pulsuz Təklif Alın"
+
+#: templates/company/home.html:17 templates/company/home.html:26
+#: templates/company/services.html:7
+msgid "Our Services"
+msgstr "Xidmətlərimiz"
+
+#: templates/company/home.html:27
+msgid "Comprehensive stone processing solutions tailored to your needs"
+msgstr "Ehtiyaclarınıza uyğunlaşdırılmış hərtərəfli daş emalı həlləri"
+
+#: templates/company/home.html:45
+msgid "View All Services"
+msgstr "Bütün Xidmətlərə Bax"
+
+#: templates/company/home.html:54 templates/company/stone_types.html:7
+msgid "Stone Types We Work With"
+msgstr "İşlədiyimiz Daş Növləri"
+
+#: templates/company/home.html:55
+msgid "Expert processing for various stone materials"
+msgstr "Müxtəlif daş materialları üçün ekspert emalı"
+
+#: templates/company/home.html:70
+msgid "View All Stone Types"
+msgstr "Bütün Daş Növlərinə Bax"
+
+#: templates/company/home.html:78
+msgid "Ready to Transform Your Stone Materials?"
+msgstr "Daş Materiallarınızı Çevirməyə Hazırsınız?"
+
+#: templates/company/home.html:82
+msgid "Start Your Project"
+msgstr "Layihənizə Başlayın"
+
+#: templates/company/home.html:85
+msgid "Call Now"
+msgstr "İndi Zəng Edin"
+
+#: templates/company/services.html:8
+msgid "Comprehensive stone processing solutions for all your needs"
+msgstr "Bütün ehtiyaclarınız üçün hərtərəfli daş emalı həlləri"
+
+#: templates/company/services.html:34
+msgid "Ready to Get Started?"
+msgstr "Başlamağa Hazırsınız?"
+
+#: templates/company/services.html:35
+msgid "Contact us today to discuss your project requirements"
+msgstr "Layihə tələblərinizi müzakirə etmək üçün bu gün bizimlə əlaqə saxlayın"
+
+#: templates/company/stone_types.html:8
+msgid "Expert processing for various natural stone materials"
+msgstr "Müxtəlif təbii daş materialları üçün ekspert emalı"
+
+#: templates/company/stone_types.html:27
+msgid "Not Sure Which Stone is Right for You?"
+msgstr "Hansı Daşın Sizin Üçün Uyğun Olduğundan Əmin Deyilsiniz?"
+
+#: templates/company/stone_types.html:30
+msgid "Get Expert Advice"
+msgstr "Ekspert Məsləhəti Alın"

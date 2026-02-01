@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section text-center">
+    <div class="container">
+        <h1 class="display-4 fw-bold mb-4 text-white">
+            {% if company %}{{ company.name }}{% else %}{% trans "Precision Gems Ltd." %}{% endif %}
+        </h1>
+        <p class="lead mb-4 text-white fs-4">{% if company %}{{ company.tagline }}{% else %}{% trans "Premium Stone
+            Cutting & Polishing Services" %}{% endif %}</p>
+        <div class="d-flex gap-3 justify-content-center flex-wrap">
+            <a href="{% url 'contact' %}" class="btn btn-primary btn-lg px-4">{% trans "Get Free Quote" %}</a>
+            <a href="{% url 'services' %}" class="btn btn-outline-light btn-lg px-4">{% trans "Our Services" %}</a>
+        </div>
+    </div>
+</section>
+
+<!-- Services Preview Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-5 fw-bold">{% trans "Our Services" %}</h2>
+            <p class="lead text-muted">{% trans "Comprehensive stone processing solutions tailored to your needs" %}</p>
+        </div>
+        <div class="row g-4">
+            {% for service in services %}
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 text-center border-0 shadow-sm service-card">
+                    <div class="card-body p-4">
+                        <div class="service-icon mb-3">
+                            <i class="{{ service.icon }} fa-2x"></i>
+                        </div>
+                        <h5 class="card-title fw-bold">{{ service.name }}</h5>
+                        <p class="card-text text-muted">{{ service.description|truncatewords:20 }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="text-center mt-4">
+            <a href="{% url 'services' %}" class="btn btn-outline-primary">{% trans "View All Services" %}</a>
+        </div>
+    </div>
+</section>
+
+<!-- Stone Types Preview Section -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-5 fw-bold">{% trans "Stone Types We Work With" %}</h2>
+            <p class="lead text-muted">{% trans "Expert processing for various stone materials" %}</p>
+        </div>
+        <div class="row g-4">
+            {% for stone in stone_types %}
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 border-0 shadow-sm stone-card">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">{{ stone.name }}</h5>
+                        <p class="card-text text-muted">{{ stone.description|truncatewords:25 }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="text-center mt-4">
+            <a href="{% url 'stone_types' %}" class="btn btn-outline-primary">{% trans "View All Stone Types" %}</a>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-5 bg-primary text-white">
+    <div class="container text-center">
+        <h3 class="fw-bold mb-3">{% trans "Ready to Transform Your Stone Materials?" %}</h3>
+        <p class="lead mb-4">{% trans "Contact us today for a free consultation and quote!" %}</p>
+        <div class="d-flex gap-3 justify-content-center flex-wrap">
+            <a href="{% url 'contact' %}" class="btn btn-light btn-lg px-4">{% trans "Start Your Project" %}</a>
+            <a href="tel:{% if company %}{{ company.phone }}{% else %}+15551234567{% endif %}"
+                class="btn btn-outline-light btn-lg px-4">
+                <i class="fas fa-phone me-2"></i>{% trans "Call Now" %}
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}
