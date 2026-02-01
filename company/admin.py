@@ -1,6 +1,6 @@
 from django.contrib import admin
 from modeltranslation.admin import TranslationAdmin
-from .models import CompanyInfo, Service, StoneType, ContactInquiry
+from .models import CompanyInfo, Service, StoneType, ContactInquiry, AboutPageContent
 
 
 @admin.register(CompanyInfo)
@@ -68,6 +68,39 @@ class StoneTypeAdmin(TranslationAdmin):
         }),
         ('Display Settings', {
             'fields': ('display_order', 'is_active')
+        }),
+    )
+    
+    class Media:
+        js = (
+            'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',
+            'http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js',
+            'modeltranslation/js/tabbed_translation_fields.js',
+        )
+        css = {
+            'screen': ('modeltranslation/css/tabbed_translation_fields.css',),
+        }
+
+@admin.register(AboutPageContent)
+class AboutPageContentAdmin(TranslationAdmin):
+    list_display = ['__str__', 'is_active']
+    list_editable = ['is_active']
+    fieldsets = (
+        ('Mission & Vision', {
+            'fields': ('mission_title', 'mission_description', 'vision_title', 'vision_description')
+        }),
+        ('Why Choose Us', {
+            'fields': (
+                'quality_title', 'quality_description',
+                'delivery_title', 'delivery_description',
+                'team_title', 'team_description',
+                'equipment_title', 'equipment_description',
+                'guarantee_title', 'guarantee_description',
+                'customer_title', 'customer_description'
+            )
+        }),
+        ('Status', {
+            'fields': ('is_active',)
         }),
     )
     

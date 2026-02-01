@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand
-from company.models import CompanyInfo, Service, StoneType
+from company.models import CompanyInfo, Service, StoneType, AboutPageContent
 
 class Command(BaseCommand):
     help = 'Load sample data for Precision Gems Ltd. in 3 languages (Azerbaijani, English, Russian)'
@@ -150,6 +150,79 @@ class Command(BaseCommand):
                 name_az=stone_data['name_az'],  # Lookup by Azerbaijani name
                 defaults=stone_data
             )
+        
+        # Create or update About Page Content with all 3 languages
+        about_data = {
+            # Mission
+            'mission_title_az': 'Missiyamız',
+            'mission_title_en': 'Our Mission',
+            'mission_title_ru': 'Наша Миссия',
+            'mission_description_az': 'Precision Gems Ltd.-də bizim missiyamız müştərilərimizə ən yüksək keyfiyyətli daş kəsmə və cilalama xidmətləri təqdim etməkdir. Biz hər layihənin unikal olduğunu başa düşürük və hər bir detalda mükəmməlliyə nail olmağa çalışırıq. Təcrübəli komandamız və qabaqcıl avadanlığımızla biz müştərilərimizin təsəvvürlərini həqiqətə çeviririk.',
+            'mission_description_en': 'At Precision Gems Ltd., our mission is to provide the highest quality stone cutting and polishing services to our customers. We understand that every project is unique and we strive to achieve perfection in every detail. With our experienced team and advanced equipment, we turn our customers\'  visions into reality.',
+            'mission_description_ru': 'В Precision Gems Ltd. наша миссия состоит в том, чтобы предоставлять нашим клиентам услуги по резке и полировке камня высочайшего качества. Мы понимаем, что каждый проект уникален, и стремимся к совершенству в каждой детали. С нашей опытной командой и современным оборудованием мы превращаем видение наших клиентов в реальность.',
+            
+            # Vision
+            'vision_title_az': 'Vizyonumuz',
+            'vision_title_en': 'Our Vision',
+            'vision_title_ru': 'Наше Видение',
+            'vision_description_az': 'Bizim vizyonumuz daş emal sənayesində lider olmaq, innovasiya, keyfiyyət və müştəri məmnuniyyətində standartlar yaratmaqdır. Biz davamlı təkmilləşmə və texnoloji irəliləyişlərə sadiq qalaraq, hər bir layihədə gözəl və davamlı nəticələr verməyə çalışırıq.',
+            'vision_description_en': 'Our vision is to be a leader in the stone processing industry, setting standards for innovation, quality, and customer satisfaction. We strive to deliver beautiful and lasting results in every project, while staying committed to continuous improvement and technological advancement.',
+            'vision_description_ru': 'Наше видение — быть лидером в индустрии обработки камня, устанавливая стандарты инноваций, качества и удовлетворенности клиентов. Мы стремимся обеспечивать красивые и долговечные результаты в каждом проекте, сохраняя приверженность постоянному совершенствованию и технологическому прогрессу.',
+            
+            # Quality
+            'quality_title_az': 'Keyfiyyətli İşçilik',
+            'quality_title_en': 'Quality Craftsmanship',
+            'quality_title_ru': 'Качественное Мастерство',
+            'quality_description_az': 'Hər detalda mükəmməlliyə nail olmaq üçün təcrübəli ustaların bacarıqları',
+            'quality_description_en': 'Skilled artisans delivering perfection in every detail',
+            'quality_description_ru': 'Опытные мастера достигают совершенства в каждой детали',
+            
+            # Delivery
+            'delivery_title_az': 'Vaxtında Çatdırılma',
+            'delivery_title_en': 'Timely Delivery',
+            'delivery_title_ru': 'Своевременная Доставка',
+            'delivery_description_az': 'Keyfiyyətdən güzəştə getmədən layihələrin vaxtında tamamlanması',
+            'delivery_description_en': 'Projects completed on time without compromising quality',
+            'delivery_description_ru': 'Проекты выполняются вовремя без ущерба для качества',
+            
+            # Team
+            'team_title_az': 'Ekspert Komanda',
+            'team_title_en': 'Expert Team',
+            'team_title_ru': 'Команда Экспертов',
+            'team_description_az': '15+ il təcrübəsi olan peşəkar daş emalı mütəxəssisləri',
+            'team_description_en': 'Professional stone processing specialists with 15+ years experience',
+            'team_description_ru': 'Профессиональные специалисты по обработке камня с опытом 15+ лет',
+            
+            # Equipment
+            'equipment_title_az': 'Müasir Avadanlıq',
+            'equipment_title_en': 'Modern Equipment',
+            'equipment_title_ru': 'Современное Оборудование',
+            'equipment_description_az': 'Dəqiq və səmərəli emal üçün ən son texnologiya',
+            'equipment_description_en': 'State-of-the-art technology for precise and efficient processing',
+            'equipment_description_ru': 'Передовые технологии для точной и эффективной обработки',
+            
+            # Guarantee
+            'guarantee_title_az': 'Keyfiyyət Zəmanəti',
+            'guarantee_title_en': 'Quality Guarantee',
+            'guarantee_title_ru': 'Гарантия Качества',
+            'guarantee_description_az': 'Bütün xidmətlərimiz üzrə tam məmnuniyyət zəmanəti',
+            'guarantee_description_en': 'Full satisfaction guarantee on all our services',
+            'guarantee_description_ru': 'Полная гарантия удовлетворения по всем нашим услугам',
+            
+            # Customer Focus
+            'customer_title_az': 'Müştəri Mərkəzli',
+            'customer_title_en': 'Customer Focus',
+            'customer_title_ru': 'Ориентация на Клиента',
+            'customer_description_az': 'Sizin ehtiyaclarınız və məmnuniyyətiniz bizim əsas prioritetimizdir',
+            'customer_description_en': 'Your needs and satisfaction are our top priority',
+            'customer_description_ru': 'Ваши потребности и удовлетворение — наш главный приоритет',
+            
+            # Non-translatable field
+            'is_active': True
+        }
+        
+        AboutPageContent.objects.all().delete()  # Clear existing content
+        AboutPageContent.objects.create(**about_data)
         
         self.stdout.write(
             self.style.SUCCESS('Successfully loaded sample data for Precision Gems Ltd. in 3 languages (az, en, ru)!')

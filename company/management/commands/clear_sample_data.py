@@ -1,8 +1,8 @@
 from django.core.management.base import BaseCommand
-from company.models import CompanyInfo, Service, StoneType, ContactInquiry
+from company.models import CompanyInfo, Service, StoneType, AboutPageContent, ContactInquiry
 
 class Command(BaseCommand):
-    help = 'Clear all data from Company tables (CompanyInfo, Service, StoneType, ContactInquiry)'
+    help = 'Clear all data from Company tables (CompanyInfo, Service, StoneType, AboutPageContent, ContactInquiry)'
 
     def add_arguments(self, parser):
         parser.add_argument(
@@ -37,7 +37,11 @@ class Command(BaseCommand):
         CompanyInfo.objects.all().delete()
         self.stdout.write(self.style.SUCCESS(f'  ✓ Deleted {company_info_count} Company Info records'))
         
-        total_count = contact_inquiry_count + service_count + stone_type_count + company_info_count
+        about_content_count = AboutPageContent.objects.count()
+        AboutPageContent.objects.all().delete()
+        self.stdout.write(self.style.SUCCESS(f'  ✓ Deleted {about_content_count} About Page Content records'))
+        
+        total_count = contact_inquiry_count + service_count + stone_type_count + company_info_count + about_content_count
         
         self.stdout.write(
             self.style.SUCCESS(f'\nSuccessfully cleared all Company data! Total records deleted: {total_count}')
