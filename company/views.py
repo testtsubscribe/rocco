@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.views.generic import ListView
+from django.utils.translation import gettext_lazy as _
 from .models import Service, StoneType
 from .forms import ContactForm
 
@@ -30,7 +31,7 @@ def contact(request):
         form = ContactForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Thank you for your inquiry! We will contact you soon.')
+            messages.success(request, _('Thank you for your inquiry! We will contact you soon.'))
             return redirect('contact')
     else:
         form = ContactForm()

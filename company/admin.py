@@ -1,32 +1,85 @@
 from django.contrib import admin
+from modeltranslation.admin import TranslationAdmin
 from .models import CompanyInfo, Service, StoneType, ContactInquiry
 
+
 @admin.register(CompanyInfo)
-class CompanyInfoAdmin(admin.ModelAdmin):
-    list_display = ['name', 'get_email', 'get_phone', 'is_active']
+class CompanyInfoAdmin(TranslationAdmin):
+    list_display = ['name', 'email', 'phone', 'is_active']
     list_editable = ['is_active']
+    fieldsets = (
+        ('General Information', {
+            'fields': ('name', 'tagline', 'description', 'address')
+        }),
+        ('Contact Information', {
+            'fields': ('phone', 'email', 'website')
+        }),
+        ('Status', {
+            'fields': ('is_active',)
+        }),
+    )
     
-    def get_email(self, obj):
-        return obj.email
-    get_email.short_description = 'Email'
-    
-    def get_phone(self, obj):
-        return obj.phone
-    get_phone.short_description = 'Phone'
+    class Media:
+        js = (
+            'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',
+            'http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js',
+            'modeltranslation/js/tabbed_translation_fields.js',
+        )
+        css = {
+            'screen': ('modeltranslation/css/tabbed_translation_fields.css',),
+        }
+
 
 @admin.register(Service)
-class ServiceAdmin(admin.ModelAdmin):
+class ServiceAdmin(TranslationAdmin):
     list_display = ['name', 'icon', 'display_order', 'is_active']
     list_editable = ['display_order', 'is_active']
     list_filter = ['is_active']
-    search_fields = ['name']
+    search_fields = ['name', 'name_en', 'name_az', 'name_ru']
+    fieldsets = (
+        ('Service Information', {
+            'fields': ('name', 'description', 'icon')
+        }),
+        ('Display Settings', {
+            'fields': ('display_order', 'is_active')
+        }),
+    )
+    
+    class Media:
+        js = (
+            'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',
+            'http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js',
+            'modeltranslation/js/tabbed_translation_fields.js',
+        )
+        css = {
+            'screen': ('modeltranslation/css/tabbed_translation_fields.css',),
+        }
+
 
 @admin.register(StoneType)
-class StoneTypeAdmin(admin.ModelAdmin):
+class StoneTypeAdmin(TranslationAdmin):
     list_display = ['name', 'display_order', 'is_active']
     list_editable = ['display_order', 'is_active']
     list_filter = ['is_active']
-    search_fields = ['name']
+    search_fields = ['name', 'name_en', 'name_az', 'name_ru']
+    fieldsets = (
+        ('Stone Type Information', {
+            'fields': ('name', 'description')
+        }),
+        ('Display Settings', {
+            'fields': ('display_order', 'is_active')
+        }),
+    )
+    
+    class Media:
+        js = (
+            'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',
+            'http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js',
+            'modeltranslation/js/tabbed_translation_fields.js',
+        )
+        css = {
+            'screen': ('modeltranslation/css/tabbed_translation_fields.css',),
+        }
 
 @admin.register(ContactInquiry)
 class ContactInquiryAdmin(admin.ModelAdmin):
