@@ -4,8 +4,8 @@
 {% block content %}
 <div class="container py-5">
     <div class="text-center mb-5">
-        <h1 class="display-4 fw-bold">{% trans "Our Services" %}</h1>
-        <p class="lead text-muted">{% trans "Comprehensive stone processing solutions for all your needs" %}</p>
+        <h1 class="display-4 fw-bold">{% if services_content %}{{ services_content.page_title }}{% else %}{% trans "Our Services" %}{% endif %}</h1>
+        <p class="lead text-muted">{% if services_content %}{{ services_content.page_subtitle }}{% else %}{% trans "Comprehensive stone processing solutions for all your needs" %}{% endif %}</p>
     </div>
 
     <div class="row g-4">
@@ -31,10 +31,9 @@
     <div class="text-center mt-5">
         <div class="card border-0 bg-light">
             <div class="card-body py-5">
-                <h3 class="fw-bold mb-3">{% trans "Ready to Get Started?" %}</h3>
-                <p class="lead text-muted mb-4">{% trans "Contact us today to discuss your project requirements" %}</p>
-                <a href="{% url 'contact' %}" class="btn btn-primary btn-lg px-4">{% trans "Get Free Consultation"
-                    %}</a>
+                <h3 class="fw-bold mb-3">{% if services_content %}{{ services_content.cta_title }}{% else %}{% trans "Ready to Get Started?" %}{% endif %}</h3>
+                <p class="lead text-muted mb-4">{% if services_content %}{{ services_content.cta_subtitle }}{% else %}{% trans "Contact us today to discuss your project requirements" %}{% endif %}</p>
+                <a href="{% url 'contact' %}" class="btn btn-primary btn-lg px-4">{% if services_content %}{{ services_content.consultation_button }}{% else %}{% trans "Get Free Consultation" %}{% endif %}</a>
             </div>
         </div>
     </div>

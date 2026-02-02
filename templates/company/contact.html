@@ -6,8 +6,8 @@
     <div class="row">
         <div class="col-lg-10 mx-auto">
             <div class="text-center mb-5">
-                <h1 class="display-4 fw-bold">{% trans "Contact Us" %}</h1>
-                <p class="lead text-muted">{% trans "Get in touch with our expert team" %}</p>
+                <h1 class="display-4 fw-bold">{% if contact_content %}{{ contact_content.page_title }}{% else %}{% trans "Contact Us" %}{% endif %}</h1>
+                <p class="lead text-muted">{% if contact_content %}{{ contact_content.page_subtitle }}{% else %}{% trans "Get in touch with our expert team" %}{% endif %}</p>
             </div>
 
             {% if messages %}
@@ -23,7 +23,7 @@
                 <div class="col-md-6">
                     <div class="card border-0 shadow-sm h-100">
                         <div class="card-body p-4">
-                            <h4 class="fw-bold mb-4">{% trans "Send us a Message" %}</h4>
+                            <h4 class="fw-bold mb-4">{% if contact_content %}{{ contact_content.form_title }}{% else %}{% trans "Send us a Message" %}{% endif %}</h4>
                             <form method="post">
                                 {% csrf_token %}
                                 <div class="mb-3">
@@ -54,7 +54,7 @@
                                     {% endif %}
                                 </div>
                                 <button type="submit" class="btn btn-primary w-100 py-2">
-                                    <i class="fas fa-paper-plane me-2"></i>{% trans "Send Message" %}
+                                    <i class="fas fa-paper-plane me-2"></i>{% if contact_content %}{{ contact_content.send_message_button }}{% else %}{% trans "Send Message" %}{% endif %}
                                 </button>
                             </form>
                         </div>
@@ -63,7 +63,7 @@
                 <div class="col-md-6">
                     <div class="card border-0 shadow-sm h-100">
                         <div class="card-body p-4">
-                            <h4 class="fw-bold mb-4">{% trans "Contact Information" %}</h4>
+                            <h4 class="fw-bold mb-4">{% if contact_content %}{{ contact_content.contact_info_title }}{% else %}{% trans "Contact Information" %}{% endif %}</h4>
                             {% if company %}
                             <div class="mb-4">
                                 <div class="d-flex align-items-start mb-3">
@@ -90,21 +90,17 @@
                             </div>
                             {% endif %}
 
+                            {% if business_hours %}
                             <div class="mt-4">
                                 <h5 class="fw-bold mb-3">{% trans "Business Hours" %}</h5>
-                                <div class="d-flex justify-content-between border-bottom py-2">
-                                    <span>{% trans "Monday - Friday" %}</span>
-                                    <span class="fw-bold">{% trans "8:00 AM - 6:00 PM" %}</span>
+                                {% for hours in business_hours %}
+                                <div class="d-flex justify-content-between {% if not forloop.last %}border-bottom{% endif %} py-2">
+                                    <span>{{ hours.day_label }}</span>
+                                    <span class="fw-bold {% if hours.is_closed %}text-muted{% endif %}">{{ hours.time_range }}</span>
                                 </div>
-                                <div class="d-flex justify-content-between border-bottom py-2">
-                                    <span>{% trans "Saturday" %}</span>
-                                    <span class="fw-bold">{% trans "9:00 AM - 2:00 PM" %}</span>
-                                </div>
-                                <div class="d-flex justify-content-between py-2">
-                                    <span>{% trans "Sunday" %}</span>
-                                    <span class="fw-bold text-muted">{% trans "Closed" %}</span>
-                                </div>
+                                {% endfor %}
                             </div>
+                            {% endif %}
                         </div>
                     </div>
                 </div>

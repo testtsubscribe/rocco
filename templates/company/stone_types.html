@@ -4,8 +4,8 @@
 {% block content %}
 <div class="container py-5">
     <div class="text-center mb-5">
-        <h1 class="display-4 fw-bold">{% trans "Stone Types We Work With" %}</h1>
-        <p class="lead text-muted">{% trans "Expert processing for various natural stone materials" %}</p>
+        <h1 class="display-4 fw-bold">{% if stone_types_content %}{{ stone_types_content.page_title }}{% else %}{% trans "Stone Types We Work With" %}{% endif %}</h1>
+        <p class="lead text-muted">{% if stone_types_content %}{{ stone_types_content.page_subtitle }}{% else %}{% trans "Expert processing for various natural stone materials" %}{% endif %}</p>
     </div>
 
     <div class="row g-4">
@@ -24,10 +24,9 @@
     <div class="text-center mt-5">
         <div class="card border-0 bg-light">
             <div class="card-body py-5">
-                <h3 class="fw-bold mb-3">{% trans "Not Sure Which Stone is Right for You?" %}</h3>
-                <p class="lead text-muted mb-4">{% trans "Our experts can help you choose the perfect stone for your
-                    project" %}</p>
-                <a href="{% url 'contact' %}" class="btn btn-primary btn-lg px-4">{% trans "Get Expert Advice" %}</a>
+                <h3 class="fw-bold mb-3">{% if stone_types_content %}{{ stone_types_content.cta_title }}{% else %}{% trans "Not Sure Which Stone is Right for You?" %}{% endif %}</h3>
+                <p class="lead text-muted mb-4">{% if stone_types_content %}{{ stone_types_content.cta_subtitle }}{% else %}{% trans "Our experts can help you choose the perfect stone for your project" %}{% endif %}</p>
+                <a href="{% url 'contact' %}" class="btn btn-primary btn-lg px-4">{% if stone_types_content %}{{ stone_types_content.expert_advice_button }}{% else %}{% trans "Get Expert Advice" %}{% endif %}</a>
             </div>
         </div>
     </div>

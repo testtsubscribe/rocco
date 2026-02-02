@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.views.generic import ListView
 from django.utils.translation import gettext_lazy as _
-from .models import Service, StoneType
+from .models import Service, StoneType, CompanyInfo, AboutPageContent, BusinessHours
 from .forms import ContactForm
 
 def home(request):
@@ -16,7 +16,14 @@ def home(request):
     return render(request, 'company/home.html', context)
 
 def about(request):
-    return render(request, 'company/about.html')
+    company = CompanyInfo.objects.filter(is_active=True).first()
+    about_content = AboutPageContent.objects.filter(is_active=True).first()
+    
+    context = {
+        'company': company,
+        'about_content': about_content,
+    }
+    return render(request, 'company/about.html', context)
 
 def services(request):
     services = Service.objects.all()
@@ -36,4 +43,9 @@ def contact(request):
     else:
         form = ContactForm()
     
-    return render(request, 'company/contact.html', {'form': form})
+    business_hours = BusinessHours.objects.filter(is_active=True)
+    
+    return render(request, 'company/contact.html', {
+        'form': form,
+        'business_hours': business_hours,
+    })

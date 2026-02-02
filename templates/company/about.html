@@ -6,8 +6,11 @@
     <div class="row">
         <div class="col-lg-10 mx-auto">
             <div class="text-center mb-5">
-                <h1 class="display-4 fw-bold">{% trans "About Us" %}</h1>
-                <p class="lead text-muted">{% trans "Learn about our journey, mission, and commitment to excellence" %}
+                <h1 class="display-4 fw-bold">{% trans "About" %} {% if company %}{{ company.name }}{% else %}{% trans
+                    "Us" %}{% endif %}</h1>
+                <p class="lead text-muted">
+                    {% if company %}{{ company.tagline }}{% else %}{% trans "Learn about our journey, mission, and
+                    commitment to excellence" %}{% endif %}
                 </p>
             </div>
 
@@ -20,24 +23,23 @@
             </div>
             {% endif %}
 
+            {% if about_content %}
             <div class="row g-4 mb-5">
                 <div class="col-md-6">
-                    <div class="card h-100 border-0">
+                    <div class="card h-100 border-0 shadow-sm">
                         <div class="card-body text-center p-4">
-                            <i class="fas fa-bullseye fa-3x text-primary mb-3"></i>
-                            <h4 class="fw-bold mb-3">{% trans "Our Mission" %}</h4>
-                            <p class="text-muted">{% trans "Providing exceptional stone cutting and polishing services
-                                with superior craftsmanship and quality." %}</p>
+                            <i class="{{ about_content.mission_icon }} fa-3x text-primary mb-3"></i>
+                            <h4 class="fw-bold mb-3">{{ about_content.mission_title }}</h4>
+                            <p class="text-muted">{{ about_content.mission_description }}</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="card h-100 border-0">
+                    <div class="card h-100 border-0 shadow-sm">
                         <div class="card-body text-center p-4">
-                            <i class="fas fa-eye fa-3x text-primary mb-3"></i>
-                            <h4 class="fw-bold mb-3">{% trans "Our Vision" %}</h4>
-                            <p class="text-muted">{% trans "To be a world-leading stone processing service provider
-                                recognized for quality and reliability." %}</p>
+                            <i class="{{ about_content.vision_icon }} fa-3x text-primary mb-3"></i>
+                            <h4 class="fw-bold mb-3">{{ about_content.vision_title }}</h4>
+                            <p class="text-muted">{{ about_content.vision_description }}</p>
                         </div>
                     </div>
                 </div>
@@ -45,44 +47,47 @@
 
             <div class="card border-0 shadow-sm">
                 <div class="card-body p-5">
-                    <h4 class="fw-bold mb-4 text-center">{% trans "Why Choose Precision Gems?" %}</h4>
+                    <h4 class="fw-bold mb-4 text-center">{{ about_content.why_choose_us_title }}</h4>
                     <div class="row g-4">
                         <div class="col-md-4 text-center">
-                            <i class="fas fa-award fa-2x text-primary mb-3"></i>
-                            <h6 class="fw-bold">{% trans "Quality Craftsmanship" %}</h6>
-                            <small class="text-muted">{% trans "Precision in every cut, perfection in every
-                                polish"%}</small>
+                            <i class="{{ about_content.quality_icon }} fa-2x text-primary mb-3"></i>
+                            <h6 class="fw-bold">{{ about_content.quality_title }}</h6>
+                            <small class="text-muted">{{ about_content.quality_description }}</small>
                         </div>
                         <div class="col-md-4 text-center">
-                            <i class="fas fa-clock fa-2x text-primary mb-3"></i>
-                            <h6 class="fw-bold">{% trans "Timely Delivery" %}</h6>
-                            <small class="text-muted">{% trans "On-time project completion guaranteed" %}</small>
+                            <i class="{{ about_content.delivery_icon }} fa-2x text-primary mb-3"></i>
+                            <h6 class="fw-bold">{{ about_content.delivery_title }}</h6>
+                            <small class="text-muted">{{ about_content.delivery_description }}</small>
                         </div>
                         <div class="col-md-4 text-center">
-                            <i class="fas fa-users fa-2x text-primary mb-3"></i>
-                            <h6 class="fw-bold">{% trans "Expert Team" %}</h6>
-                            <small class="text-muted">{% trans "Professional specialists with decades of experience"
-                                %}</small>
+                            <i class="{{ about_content.team_icon }} fa-2x text-primary mb-3"></i>
+                            <h6 class="fw-bold">{{ about_content.team_title }}</h6>
+                            <small class="text-muted">{{ about_content.team_description }}</small>
                         </div>
                         <div class="col-md-4 text-center">
-                            <i class="fas fa-cogs fa-2x text-primary mb-3"></i>
-                            <h6 class="fw-bold">{% trans "Modern Equipment" %}</h6>
-                            <small class="text-muted">{% trans "State-of-the-art technology for superior results"
-                                %}</small>
+                            <i class="{{ about_content.equipment_icon }} fa-2x text-primary mb-3"></i>
+                            <h6 class="fw-bold">{{ about_content.equipment_title }}</h6>
+                            <small class="text-muted">{{ about_content.equipment_description }}</small>
                         </div>
                         <div class="col-md-4 text-center">
-                            <i class="fas fa-shield-alt fa-2x text-primary mb-3"></i>
-                            <h6 class="fw-bold">{% trans "Quality Guarantee" %}</h6>
-                            <small class="text-muted">{% trans "We stand behind our work with confidence" %}</small>
+                            <i class="{{ about_content.guarantee_icon }} fa-2x text-primary mb-3"></i>
+                            <h6 class="fw-bold">{{ about_content.guarantee_title }}</h6>
+                            <small class="text-muted">{{ about_content.guarantee_description }}</small>
                         </div>
                         <div class="col-md-4 text-center">
-                            <i class="fas fa-handshake fa-2x text-primary mb-3"></i>
-                            <h6 class="fw-bold">{% trans "Customer Focus" %}</h6>
-                            <small class="text-muted">{% trans "Your satisfaction is our top priority" %}</small>
+                            <i class="{{ about_content.customer_icon }} fa-2x text-primary mb-3"></i>
+                            <h6 class="fw-bold">{{ about_content.customer_title }}</h6>
+                            <small class="text-muted">{{ about_content.customer_description }}</small>
                         </div>
                     </div>
                 </div>
             </div>
+            {% else %}
+            <div class="text-center py-5">
+                <p class="lead text-muted">{% trans "About content is currently being updated. Please check back soon."
+                    %}</p>
+            </div>
+            {% endif %}
         </div>
     </div>
 </div>
